@@ -9,7 +9,7 @@ class Recipient extends Model {
         number: Sequelize.NUMBER,
         complement: Sequelize.STRING,
         state: Sequelize.STRING,
-        city: Sequelize.STRING,
+        city: Sequelize.CHAR(2),
         zip: Sequelize.STRING,
       },
       {
