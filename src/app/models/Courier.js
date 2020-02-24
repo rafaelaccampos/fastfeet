@@ -5,7 +5,6 @@ class Courier extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        avatar_id: Sequelize.INTEGER,
         email: Sequelize.STRING,
       },
       {
@@ -13,6 +12,10 @@ class Courier extends Model {
       }
     );
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
   }
 }
 
