@@ -6,7 +6,6 @@ class Delivery extends Model {
       {
         recipient_id: Sequelize.INTEGER,
         courier_id: Sequelize.INTEGER,
-        signature_id: Sequelize.INTEGER,
         product: Sequelize.STRING,
         canceled_at: Sequelize.DATE,
         start_date: Sequelize.DATE,
@@ -21,7 +20,7 @@ class Delivery extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'signature_id' });
+    this.belongsTo(models.Signature, { foreignKey: 'signature_id' });
   }
 }
 
