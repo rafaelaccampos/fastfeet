@@ -1,8 +1,18 @@
 import Courier from '../models/Courier';
+import File from '../models/File';
 
 class CourierController {
   async index(req, res) {
-    const couriers = await Courier.findAll();
+    const couriers = await Courier.findAll({
+      attributes: ['id', 'name', 'email', 'avatar_id'],
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['name', 'path', 'url'],
+        },
+      ],
+    });
     const empty = 0;
 
     if (couriers.length === empty) {
