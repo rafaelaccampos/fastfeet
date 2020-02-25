@@ -3,8 +3,9 @@ import Courier from '../models/Courier';
 class CourierController {
   async index(req, res) {
     const couriers = await Courier.findAll();
+    const empty = 0;
 
-    if (!couriers) {
+    if (couriers.length === empty) {
       return res.status(400).json({ error: 'Sorry, there are no couriers!' });
     }
 
